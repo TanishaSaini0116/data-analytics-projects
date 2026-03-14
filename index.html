@@ -1,0 +1,503 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FDFAF5;--cream2:#F5F0E8;--cream3:#EDE8DF;
+  --ink:#1C1A16;--ink2:#4A4540;--ink3:#8A857C;
+  --amber:#C4780A;--amber-bg:#FEF3DC;--amber-bd:#F5C842;
+  --teal:#0F6E56;--teal-bg:#E1F5EE;--teal-bd:#5DCAA5;
+  --coral:#993C1D;--coral-bg:#FAECE7;--coral-bd:#F0997B;
+  --indigo:#3C3489;--indigo-bg:#EEEDFE;--indigo-bd:#AFA9EC;
+  --rose:#993556;--rose-bg:#FBEAF0;--rose-bd:#ED93B1;
+}
+.wrap{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;border-radius:14px;border:1px solid var(--cream3);overflow:hidden}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:rgba(253,250,245,0.95);border-bottom:1.5px solid var(--cream3);position:sticky;top:0;z-index:10}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink3);letter-spacing:0.06em}
+.nav-sep{color:var(--amber)}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-link{font-size:12px;color:var(--ink3);transition:color 0.2s;cursor:pointer}
+.nav-link:hover{color:var(--amber)}
+.nav-cta{background:var(--ink);color:var(--cream);padding:7px 18px;border-radius:8px;font-size:11px;font-weight:500;cursor:pointer;transition:background 0.2s}
+.nav-cta:hover{background:var(--amber)}
+
+/* HERO */
+.hero{position:relative;padding:56px 28px 0;overflow:hidden;background:var(--cream)}
+.hero-accent-strip{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--amber) 0%,var(--amber-bd) 40%,var(--teal-bd) 70%,var(--teal) 100%)}
+.bg-filmstrip{position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:140px;color:rgba(28,26,22,0.04);pointer-events:none;line-height:1;letter-spacing:-0.02em;animation:bgf 12s ease-in-out infinite}
+@keyframes bgf{0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(-52%) translateX(-10px)}}
+.hero-label{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:ru 0.6s 0.1s forwards}
+.ldot{width:7px;height:7px;border-radius:50%;background:var(--amber);position:relative;flex-shrink:0}
+.ldot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--amber);opacity:0;animation:lp 2s ease infinite}
+@keyframes lp{0%{transform:scale(0.6);opacity:0.8}100%{transform:scale(2);opacity:0}}
+.hero-title{font-family:'Bebas Neue',sans-serif;line-height:0.92;margin-bottom:20px}
+.tl{display:block;font-size:68px;color:var(--ink);opacity:0;animation:ru 0.75s forwards}
+.tl:nth-child(1){animation-delay:0.05s}.tl:nth-child(2){animation-delay:0.18s;color:var(--amber)}.tl:nth-child(3){animation-delay:0.31s}.tl:nth-child(4){animation-delay:0.44s}
+@keyframes ru{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-sub{font-size:13px;color:var(--ink2);line-height:1.75;margin-bottom:28px;font-weight:300;max-width:420px;opacity:0;animation:ru 0.6s 0.6s forwards}
+.hero-btns{display:flex;gap:12px;align-items:center;flex-wrap:wrap;opacity:0;animation:ru 0.6s 0.78s forwards}
+.btn-primary{background:var(--ink);color:var(--cream);padding:11px 26px;border-radius:9px;font-weight:500;font-size:13px;cursor:pointer;position:relative;overflow:hidden;transition:background 0.2s,transform 0.2s}
+.btn-primary:hover{background:var(--amber);transform:translateY(-2px)}
+.btn-shine{position:absolute;top:0;left:-100%;width:50%;height:100%;background:rgba(255,255,255,0.18);transform:skewX(-18deg);transition:left 0.5s}
+.btn-primary:hover .btn-shine{left:180%}
+.btn-ghost{color:var(--ink3);font-size:13px;padding:11px 20px;border:1.5px solid var(--cream3);border-radius:9px;cursor:pointer;transition:color 0.2s,border-color 0.2s,transform 0.2s}
+.btn-ghost:hover{color:var(--amber);border-color:var(--amber-bd);transform:translateY(-2px)}
+
+/* STATS */
+.stats-row{display:flex;align-items:center;margin-top:44px;padding:24px 28px;border-top:1.5px solid var(--cream3);background:var(--cream2);gap:0;opacity:0;animation:ru 0.6s 0.95s forwards}
+.stat{display:flex;flex-direction:column;gap:4px;padding:0 32px}
+.stat:first-child{padding-left:0}
+.snum{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amber);line-height:1}
+.slbl{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:0.1em}
+.sdiv{width:1.5px;height:40px;background:var(--cream3)}
+
+/* SECTION */
+.section{padding:44px 28px}
+.section.alt{background:var(--cream2)}
+.stag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--amber);margin-bottom:10px}
+.stitle{font-family:'Bebas Neue',sans-serif;font-size:38px;line-height:1;color:var(--ink);margin-bottom:8px}
+.stitle.center{text-align:center}
+.ssub{text-align:center;font-size:12px;color:var(--ink3);line-height:1.7;margin-bottom:28px;font-weight:300}
+
+/* TOOLS */
+.tools-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:4px}
+.tcard{background:white;border:1.5px solid var(--cream3);border-radius:14px;padding:20px 16px;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;cursor:default}
+.tcard:hover{border-color:var(--amber-bd);transform:translateY(-5px) rotate(-0.5deg);box-shadow:0 12px 32px rgba(196,120,10,0.1)}
+.ticon{width:40px;height:40px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tcard h3{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--ink);margin-bottom:6px}
+.tcard p{font-size:11px;color:var(--ink3);line-height:1.65;margin-bottom:12px;font-weight:300}
+.tbadge{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.08em;padding:3px 9px;border-radius:5px}
+.tb-a{background:var(--amber-bg);color:var(--amber)}
+.tb-b{background:var(--indigo-bg);color:var(--indigo)}
+.tb-t{background:var(--teal-bg);color:var(--teal)}
+.tb-g{background:#EAF3DE;color:#3B6D11}
+
+/* FLOATING ELEMENTS */
+.float-chip{position:absolute;font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:5px 10px;border-radius:20px;border:1.5px solid;pointer-events:none;white-space:nowrap}
+.fc-amber{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd)}
+.fc-teal{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-bd)}
+.fc-coral{background:var(--coral-bg);color:var(--coral);border-color:var(--coral-bd)}
+.fc-indigo{background:var(--indigo-bg);color:var(--indigo);border-color:var(--indigo-bd)}
+
+/* DASHBOARD SECTION */
+.db-wrap{position:relative;padding:44px 28px}
+.db-float-zone{position:relative;padding:0 20px}
+.dframe{background:white;border-radius:16px;border:1.5px solid var(--cream3);box-shadow:0 8px 40px rgba(28,26,22,0.08);overflow:hidden;position:relative;z-index:2;transition:transform 0.3s,box-shadow 0.3s}
+.dframe:hover{transform:translateY(-3px);box-shadow:0 16px 52px rgba(28,26,22,0.12)}
+.fbar{display:flex;align-items:center;gap:6px;padding:10px 16px;background:var(--cream2);border-bottom:1.5px solid var(--cream3)}
+.fd{width:10px;height:10px;border-radius:50%}.fd.r{background:#ff5f57}.fd.y{background:#febc2e}.fd.g{background:#28c840}
+.ftitle{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--ink3);margin-left:8px;flex:1}
+.fbadge{font-family:'DM Mono',monospace;font-size:9px;color:#28c840;animation:bk 2.5s infinite}
+@keyframes bk{0%,100%{opacity:1}50%{opacity:0.4}}
+.dmock{display:grid;grid-template-columns:1fr 2fr;gap:1.5px;background:var(--cream3)}
+.mpanel{background:var(--cream);padding:14px;display:flex;flex-direction:column;gap:8px}
+.mptitle{font-family:'DM Mono',monospace;font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:0.07em;border-bottom:1.5px solid var(--cream3);padding-bottom:7px}
+.mlegend{display:flex;flex-wrap:wrap;gap:6px}
+.mli{display:flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:9px;color:var(--ink3)}
+.mlc{width:7px;height:7px;border-radius:2px;flex-shrink:0}
+
+/* SVG chart animations */
+.pie-sl{transform-origin:70px 70px;animation:pi 0.65s cubic-bezier(0.34,1.56,0.64,1) both}
+@keyframes pi{from{transform:scale(0)}to{transform:scale(1)}}
+.lpath{stroke-dasharray:520;stroke-dashoffset:520;animation:dl 1.8s cubic-bezier(0.4,0,0.2,1) 0.4s forwards}
+@keyframes dl{to{stroke-dashoffset:0}}
+.lfill{opacity:0;animation:fdi 0.5s 1.8s forwards}
+@keyframes fdi{to{opacity:1}}
+.pkdot{animation:pkp 0.4s cubic-bezier(0.34,1.56,0.64,1) 2.1s both}
+@keyframes pkp{from{r:0}to{r:4}}
+.pkring{animation:pkr 2.2s ease infinite 2.3s}
+@keyframes pkr{0%{r:5;opacity:0.5}100%{r:16;opacity:0}}
+.bbl{transform-origin:center;animation:bbin 0.65s cubic-bezier(0.34,1.56,0.64,1) both}
+@keyframes bbin{from{transform:scale(0)}to{transform:scale(1)}}
+.bar{transform-origin:bottom;animation:brise 0.65s cubic-bezier(0.34,1.56,0.64,1) both}
+@keyframes brise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* INSIGHTS */
+.ins-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.icard{background:white;border-radius:14px;padding:22px 18px;border:1.5px solid var(--cream3);position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;cursor:default}
+.icard:hover{transform:translateY(-5px) rotate(0.3deg);box-shadow:0 14px 36px rgba(28,26,22,0.1);border-color:var(--cream3)}
+.icard.hl-amber{background:var(--amber-bg);border-color:var(--amber-bd)}
+.icard.hl-teal{background:var(--teal-bg);border-color:var(--teal-bd)}
+.icard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 14px 14px;transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.icard:hover::after{transform:scaleX(1)}
+.icard.hl-amber::after{background:var(--amber)}
+.icard.hl-teal::after{background:var(--teal)}
+.icard:not(.hl-amber):not(.hl-teal)::after{background:var(--amber)}
+.inum{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;margin-bottom:6px;font-weight:500}
+.inum.ca{color:var(--amber)}.inum.ct{color:var(--teal)}
+.iico{font-size:20px;margin-bottom:8px;display:block}
+.icard h3{font-family:'Bebas Neue',sans-serif;font-size:18px;margin-bottom:6px;letter-spacing:0.02em}
+.icard.hl-amber h3{color:var(--amber)}
+.icard.hl-teal h3{color:var(--teal)}
+.icard:not(.hl-amber):not(.hl-teal) h3{color:var(--ink)}
+.icard p{font-size:11px;color:var(--ink3);line-height:1.65;font-weight:300}
+.icard.hl-amber p{color:var(--amber)}
+.icard.hl-teal p{color:var(--teal)}
+.icard strong{font-weight:500}
+.icard:not(.hl-amber):not(.hl-teal) strong{color:var(--amber)}
+.icard.hl-amber strong{color:var(--coral)}
+.icard.hl-teal strong{color:var(--teal)}
+
+/* CTA */
+.cta-box{background:var(--ink);border-radius:20px;padding:44px 40px;display:grid;grid-template-columns:1fr auto;gap:44px;align-items:center;position:relative;overflow:hidden}
+.cta-stripe{position:absolute;top:0;left:0;right:0;height:3.5px;background:linear-gradient(90deg,var(--amber-bd),var(--teal-bd))}
+.cta-bg-circ{position:absolute;width:280px;height:280px;border-radius:50%;right:-70px;top:-80px;border:40px solid rgba(255,255,255,0.04);pointer-events:none;animation:crot 18s linear infinite}
+@keyframes crot{to{transform:rotate(360deg)}}
+.clbl{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber-bd);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.clbl-d{width:5px;height:5px;background:var(--amber-bd);border-radius:50%}
+.cta-box h2{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--cream);line-height:0.95;margin-bottom:14px}
+.cta-box h2 em{color:var(--amber-bd)}
+.cta-box p{font-size:12px;color:rgba(253,250,245,0.55);line-height:1.75;font-weight:300;max-width:380px;margin-bottom:18px}
+.cta-meta{display:flex;gap:14px;flex-wrap:wrap}
+.cta-meta span{font-family:'DM Mono',monospace;font-size:10px;color:rgba(253,250,245,0.4)}
+.cta-right{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+.btn-dl{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--amber-bd);color:var(--ink);padding:14px 26px;border-radius:10px;font-weight:500;font-size:13px;white-space:nowrap;cursor:pointer;position:relative;overflow:hidden;transition:transform 0.2s,background 0.2s}
+.btn-dl:hover{background:#F5D060;transform:translateY(-2px)}
+.btn-dl svg{width:15px;height:15px;flex-shrink:0}
+.btn-dl-shine{position:absolute;top:0;left:-100%;width:50%;height:100%;background:rgba(255,255,255,0.25);transform:skewX(-18deg);transition:left 0.5s}
+.btn-dl:hover .btn-dl-shine{left:200%}
+.btn-sec{display:flex;align-items:center;justify-content:center;gap:6px;color:rgba(253,250,245,0.5);font-size:12px;padding:12px 24px;border:1.5px solid rgba(253,250,245,0.12);border-radius:9px;cursor:pointer;transition:color 0.2s,border-color 0.2s}
+.btn-sec:hover{color:var(--cream);border-color:rgba(253,250,245,0.3)}
+
+/* FOOTER */
+.footer{padding:18px 28px;border-top:1.5px solid var(--cream3);background:var(--cream2);display:flex;justify-content:space-between;align-items:center}
+.fbrand{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink3)}
+.ftop{font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);cursor:pointer}
+.fnote{font-family:'DM Mono',monospace;font-size:9px;color:var(--ink3);opacity:0.5}
+
+/* FLOATING BADGE ANIMATIONS */
+@keyframes fl1{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+@keyframes fl2{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-13px) rotate(-1.5deg)}}
+@keyframes fl3{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes fl4{0%,100%{transform:translateY(0) rotate(1.5deg)}50%{transform:translateY(-11px) rotate(-2deg)}}
+@keyframes fl5{0%,100%{transform:translateY(0) rotate(-3deg) scale(1)}50%{transform:translateY(-12px) rotate(1deg) scale(1.04)}}
+@keyframes fl6{0%,100%{transform:translateY(0) rotate(1deg) scale(1)}50%{transform:translateY(-9px) rotate(-2.5deg) scale(1.03)}}
+
+/* Scroll reveal */
+.sr{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.sr.vis{opacity:1;transform:translateY(0)}
+.sr-d1{transition-delay:0.1s}.sr-d2{transition-delay:0.2s}.sr-d3{transition-delay:0.3s}.sr-d4{transition-delay:0.4s}.sr-d5{transition-delay:0.5s}
+
+/* Hero floating chips */
+.hero-chip{position:absolute;font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:6px 12px;border-radius:20px;border:1.5px solid;pointer-events:none;white-space:nowrap;z-index:3;box-shadow:0 4px 14px rgba(28,26,22,0.08)}
+
+/* Stats glow pulse */
+@keyframes statGlow{0%,100%{opacity:1}50%{opacity:0.75}}
+
+/* Tool cards gentle float */
+@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.tcard:nth-child(1){animation:cardFloat 5s ease-in-out infinite}
+.tcard:nth-child(2){animation:cardFloat 6s ease-in-out infinite 0.8s}
+.tcard:nth-child(3){animation:cardFloat 5.5s ease-in-out infinite 1.5s}
+.tcard:nth-child(4){animation:cardFloat 6.5s ease-in-out infinite 0.4s}
+.tcard:hover{animation:none;transform:translateY(-5px) rotate(-0.5deg)!important}
+
+/* Insight cards gentle float */
+@keyframes iFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.ins-g .icard:nth-child(1){animation:iFloat 6s ease-in-out infinite}
+.ins-g .icard:nth-child(2){animation:iFloat 7s ease-in-out infinite 1s}
+.ins-g .icard:nth-child(3){animation:iFloat 5.5s ease-in-out infinite 0.5s}
+.ins-g .icard:nth-child(4){animation:iFloat 6.5s ease-in-out infinite 1.5s}
+.ins-g .icard:nth-child(5){animation:iFloat 7s ease-in-out infinite 0.8s}
+.ins-g .icard:nth-child(6){animation:iFloat 5.8s ease-in-out infinite 1.2s}
+.ins-g .icard:hover{animation:none}
+
+/* Accent strip shift */
+@keyframes stripShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.hero-accent-strip{background-size:200% 100%;animation:stripShift 4s linear infinite}
+
+/* Peak dot bounce */
+@keyframes dotBounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.2)}}
+.pkdot{animation:pkp 0.4s cubic-bezier(0.34,1.56,0.64,1) 2.1s both,dotBounce 2.5s ease-in-out infinite 2.8s!important}
+
+/* Bubble orbit */
+@keyframes bubbleOrbit{0%,100%{transform:translate(0,0)}50%{transform:translate(2px,-4px)}}
+.bbl:nth-child(1){animation:bbin 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.1s both,bubbleOrbit 5s ease-in-out infinite 1.5s}
+.bbl:nth-child(2){animation:bbin 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.25s both,bubbleOrbit 6s ease-in-out infinite 1s}
+.bbl:nth-child(3){animation:bbin 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.4s both,bubbleOrbit 7s ease-in-out infinite 2s}
+.bbl:nth-child(4){animation:bbin 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.55s both,bubbleOrbit 4.5s ease-in-out infinite 0.5s}
+.bbl:nth-child(5){animation:bbin 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.7s both,bubbleOrbit 5.5s ease-in-out infinite 1.8s}
+
+/* Download button pulse */
+@keyframes dlPulse{0%,100%{box-shadow:0 4px 20px rgba(245,200,66,0.28)}50%{box-shadow:0 4px 32px rgba(245,200,66,0.55)}}
+.btn-dl{animation:dlPulse 2.5s ease-in-out infinite}
+.btn-dl:hover{animation:none}
+</style>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav-brand">TA <span class="nav-sep">/</span> Portfolio</span>
+    <div class="nav-links">
+      <span class="nav-link">Overview</span>
+      <span class="nav-link">Tools</span>
+      <span class="nav-link">Insights</span>
+      <span class="nav-cta">View Report</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-accent-strip"></div>
+    <div class="bg-filmstrip">FILM</div>
+
+    <!-- Floating hero chips -->
+    <div class="hero-chip fc-amber" style="top:18%;right:8%;animation:fl2 4.5s ease-in-out infinite">77 Films Analyzed</div>
+    <div class="hero-chip fc-teal" style="top:28%;right:14%;animation:fl1 5.5s ease-in-out infinite 0.6s">6 Genres</div>
+    <div class="hero-chip fc-coral" style="top:40%;right:6%;animation:fl3 5s ease-in-out infinite 1.2s">2006 – 2012</div>
+    <div class="hero-chip fc-indigo" style="top:55%;right:16%;animation:fl4 6s ease-in-out infinite 0.3s">12+ Studios</div>
+
+    <div class="hero-label"><span class="ldot"></span>Data Analytics · 2024</div>
+    <h1 class="hero-title">
+      <span class="tl">Hollywood</span>
+      <span class="tl">Movie</span>
+      <span class="tl">Profitability</span>
+      <span class="tl">Analysis</span>
+    </h1>
+    <p class="hero-sub">Uncovering which genres, studios, and eras drive the most profitable stories in cinema — backed by data.</p>
+    <div class="hero-btns">
+      <div class="btn-primary">Explore Insights <span class="btn-shine"></span></div>
+      <div class="btn-ghost">View Report →</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><span class="snum" id="c1">0</span><span class="slbl">Films Analyzed</span></div>
+      <div class="sdiv"></div>
+      <div class="stat"><span class="snum" id="c2">0</span><span class="slbl">Genres</span></div>
+      <div class="sdiv"></div>
+      <div class="stat"><span class="snum" id="c3">0</span><span class="slbl">Studios</span></div>
+      <div class="sdiv"></div>
+      <div class="stat"><span class="snum">2006–12</span><span class="slbl">Time Period</span></div>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="section alt sr">
+    <div class="stag">02 — Stack</div>
+    <div class="stitle center">Tools &amp; Technologies</div>
+    <p class="ssub">End-to-end analytics from raw data to interactive dashboard.</p>
+    <div class="tools-g">
+      <div class="tcard">
+        <div class="ticon" style="background:var(--amber-bg)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v18M2 11h18M5 5l12 12M17 5L5 17" stroke="#C4780A" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Tableau</h3><p>Interactive charts combined into one executive dashboard for clear storytelling.</p>
+        <span class="tbadge tb-a">Primary Tool</span>
+      </div>
+      <div class="tcard">
+        <div class="ticon" style="background:var(--indigo-bg)"><svg width="22" height="22" viewBox="0 0 22 22"><text x="4" y="17" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#3C3489">R</text></svg></div>
+        <h3>R Language</h3><p>Data cleaning, null treatment, outlier removal and summary statistics.</p>
+        <span class="tbadge tb-b">Data Prep</span>
+      </div>
+      <div class="tcard">
+        <div class="ticon" style="background:var(--teal-bg)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="12" width="4" height="8" rx="1.5" fill="#0F6E56"/><rect x="9" y="7" width="4" height="13" rx="1.5" fill="#0F6E56" opacity="0.7"/><rect x="16" y="3" width="4" height="17" rx="1.5" fill="#0F6E56" opacity="0.45"/></svg></div>
+        <h3>Data Viz</h3><p>Color-coded charts with annotations and dynamic filtering.</p>
+        <span class="tbadge tb-t">Design</span>
+      </div>
+      <div class="tcard">
+        <div class="ticon" style="background:#EAF3DE"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h12M3 16h14" stroke="#3B6D11" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Excel / CSV</h3><p>Raw data storage and format standardization before analysis.</p>
+        <span class="tbadge tb-g">Data Source</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD with floating chips -->
+  <div class="db-wrap section">
+    <div class="stag">03 — Dashboard</div>
+    <div class="stitle center">The Tableau Dashboard</div>
+    <p class="ssub">Four coordinated views answering distinct questions about Hollywood's financial landscape.</p>
+
+    <div style="position:relative">
+      <!-- Floating animated chips -->
+      <div class="float-chip fc-amber" style="position:absolute;top:-14px;left:10px;animation:fl2 4s ease-in-out infinite">Comedy #1</div>
+      <div class="float-chip fc-teal" style="position:absolute;top:-14px;right:60px;animation:fl1 5s ease-in-out infinite 0.5s">2008 Peak</div>
+      <div class="float-chip fc-coral" style="position:absolute;bottom:30px;left:-10px;animation:fl3 4.5s ease-in-out infinite 1s">Warner $2081M</div>
+      <div class="float-chip fc-indigo" style="position:absolute;bottom:30px;right:0px;animation:fl4 5.5s ease-in-out infinite 0.8s">154.6 profit</div>
+      <!-- Extra chips -->
+      <div class="float-chip fc-teal" style="position:absolute;top:40%;left:-18px;animation:fl5 6s ease-in-out infinite 0.3s">ROI: High</div>
+      <div class="float-chip fc-amber" style="position:absolute;top:55%;right:-14px;animation:fl6 5s ease-in-out infinite 1.4s">Animation ↑</div>
+
+      <div class="dframe">
+        <div class="fbar">
+          <span class="fd r"></span><span class="fd y"></span><span class="fd g"></span>
+          <span class="ftitle">Hollywood_Dashboard.twbx — Tableau Desktop</span>
+          <span class="fbadge">● Live</span>
+        </div>
+        <div class="dmock">
+          <!-- Pie -->
+          <div class="mpanel">
+            <div class="mptitle">Genre-wise audience score</div>
+            <svg viewBox="0 0 140 130" style="width:100%;max-width:140px;align-self:center">
+              <path class="pie-sl" d="M70 70 L70 12 A58 58 0 0 1 120 92 Z" fill="#C4780A" style="animation-delay:0s"/>
+              <path class="pie-sl" d="M70 70 L120 92 A58 58 0 0 1 22 98 Z" fill="#D85A30" style="animation-delay:0.15s"/>
+              <path class="pie-sl" d="M70 70 L22 98 A58 58 0 0 1 18 42 Z" fill="#1D9E75" style="animation-delay:0.3s"/>
+              <path class="pie-sl" d="M70 70 L18 42 A58 58 0 0 1 70 12 Z" fill="#7F77DD" style="animation-delay:0.45s"/>
+              <circle cx="70" cy="70" r="24" fill="white"/>
+              <text x="70" y="68" text-anchor="middle" fill="#C4780A" font-size="9" font-family="DM Mono,monospace" font-weight="500">4,682</text>
+              <text x="70" y="78" text-anchor="middle" fill="#8A857C" font-size="6.5" font-family="DM Mono,monospace">total</text>
+            </svg>
+            <div class="mlegend">
+              <span class="mli"><span class="mlc" style="background:#C4780A"></span>Comedy</span>
+              <span class="mli"><span class="mlc" style="background:#D85A30"></span>Drama</span>
+              <span class="mli"><span class="mlc" style="background:#1D9E75"></span>Action</span>
+              <span class="mli"><span class="mlc" style="background:#7F77DD"></span>Romance</span>
+            </div>
+          </div>
+          <!-- Line -->
+          <div class="mpanel">
+            <div class="mptitle">Year-wise profitability (2006–2012)</div>
+            <svg viewBox="0 0 300 115" style="width:100%">
+              <defs><linearGradient id="ag" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#C4780A;stop-opacity:0.18"/><stop offset="100%" style="stop-color:#C4780A;stop-opacity:0"/></linearGradient></defs>
+              <path d="M22 90 L65 76 L108 14 L152 50 L196 72 L240 65 L280 71" fill="none" stroke="#C4780A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lpath"/>
+              <path d="M22 90 L65 76 L108 14 L152 50 L196 72 L240 65 L280 71 L280 100 L22 100 Z" fill="url(#ag)" class="lfill"/>
+              <circle cx="108" cy="14" r="4" fill="#C4780A" class="pkdot"/>
+              <circle cx="108" cy="14" fill="none" stroke="#C4780A" stroke-width="1.5" opacity="0.4" class="pkring"/>
+              <text x="108" y="8" text-anchor="middle" fill="#C4780A" font-size="8" font-family="DM Mono,monospace">154.6</text>
+              <line x1="22" y1="100" x2="280" y2="100" stroke="#EDE8DF" stroke-width="1.5"/>
+              <text x="22" y="110" fill="#8A857C" font-size="7" font-family="DM Mono,monospace">2006</text>
+              <text x="98" y="110" fill="#8A857C" font-size="7" font-family="DM Mono,monospace">2008</text>
+              <text x="184" y="110" fill="#8A857C" font-size="7" font-family="DM Mono,monospace">2010</text>
+              <text x="264" y="110" fill="#8A857C" font-size="7" font-family="DM Mono,monospace">2012</text>
+            </svg>
+          </div>
+          <!-- Bubble -->
+          <div class="mpanel">
+            <div class="mptitle">Genre-wise profit bubble</div>
+            <svg viewBox="0 0 140 125" style="width:100%;max-width:150px;align-self:center">
+              <circle class="bbl" cx="58" cy="58" r="40" fill="#D85A30" opacity="0.75" style="animation-delay:0.1s"/>
+              <circle class="bbl" cx="100" cy="44" r="26" fill="#C4780A" opacity="0.8" style="animation-delay:0.25s"/>
+              <circle class="bbl" cx="46" cy="95" r="18" fill="#1D9E75" opacity="0.75" style="animation-delay:0.4s"/>
+              <circle class="bbl" cx="102" cy="92" r="13" fill="#7F77DD" opacity="0.8" style="animation-delay:0.55s"/>
+              <circle class="bbl" cx="16" cy="34" r="9" fill="#D4537E" opacity="0.75" style="animation-delay:0.7s"/>
+              <text x="58" y="61" text-anchor="middle" fill="white" font-size="8" font-family="DM Mono,monospace" font-weight="500">Comedy</text>
+              <text x="100" y="47" text-anchor="middle" fill="white" font-size="7" font-family="DM Mono,monospace">Drama</text>
+            </svg>
+          </div>
+          <!-- Bar -->
+          <div class="mpanel">
+            <div class="mptitle">Studio-wise worldwide gross ($M)</div>
+            <svg viewBox="0 0 295 108" style="width:100%">
+              <rect class="bar" x="8" y="8" width="30" height="76" rx="3" fill="#C4780A" style="animation-delay:0s"/>
+              <rect class="bar" x="46" y="12" width="30" height="72" rx="3" fill="#D85A30" style="animation-delay:0.07s"/>
+              <rect class="bar" x="84" y="28" width="30" height="56" rx="3" fill="#1D9E75" style="animation-delay:0.14s"/>
+              <rect class="bar" x="122" y="42" width="30" height="42" rx="3" fill="#7F77DD" style="animation-delay:0.21s"/>
+              <rect class="bar" x="160" y="56" width="30" height="28" rx="3" fill="#D4537E" style="animation-delay:0.28s"/>
+              <rect class="bar" x="198" y="66" width="30" height="18" rx="3" fill="#3B6D11" style="animation-delay:0.35s"/>
+              <rect class="bar" x="236" y="74" width="30" height="10" rx="3" fill="#854F0B" style="animation-delay:0.42s"/>
+              <text x="23" y="5" text-anchor="middle" fill="#C4780A" font-size="7" font-family="DM Mono,monospace">2081</text>
+              <text x="61" y="9" text-anchor="middle" fill="#D85A30" font-size="7" font-family="DM Mono,monospace">2021</text>
+              <text x="23" y="100" text-anchor="middle" fill="#8A857C" font-size="6" font-family="DM Mono,monospace">Warner</text>
+              <text x="61" y="100" text-anchor="middle" fill="#8A857C" font-size="6" font-family="DM Mono,monospace">Disney</text>
+              <text x="99" y="100" text-anchor="middle" fill="#8A857C" font-size="6" font-family="DM Mono,monospace">Indep.</text>
+              <text x="137" y="100" text-anchor="middle" fill="#8A857C" font-size="6" font-family="DM Mono,monospace">Summit</text>
+              <text x="175" y="100" text-anchor="middle" fill="#8A857C" font-size="6" font-family="DM Mono,monospace">Fox</text>
+              <text x="213" y="100" text-anchor="middle" fill="#8A857C" font-size="6" font-family="DM Mono,monospace">Sony</text>
+              <text x="251" y="100" text-anchor="middle" fill="#8A857C" font-size="6" font-family="DM Mono,monospace">Param.</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="section alt sr">
+    <div class="stag">04 — Key Findings</div>
+    <div class="stitle center">Key Insights</div>
+    <p class="ssub">Six data-backed findings extracted from the dashboard.</p>
+    <div class="ins-g">
+      <div class="icard">
+        <div class="inum ca">01</div><span class="iico">🏆</span>
+        <h3>Comedy Leads</h3>
+        <p>Audience score <strong>2,517</strong> — nearly 3× Drama — plus the highest genre profitability.</p>
+      </div>
+      <div class="icard hl-amber">
+        <div class="inum ca">02</div><span class="iico">📈</span>
+        <h3>2008: Peak Year</h3>
+        <p>Profitability spiked to <strong>154.6</strong> — a dramatic outlier before the recession drop.</p>
+      </div>
+      <div class="icard">
+        <div class="inum ct">03</div><span class="iico">🎠</span>
+        <h3>Animation ROI</h3>
+        <p>Smallest share but impressive returns — high ROI on lean budgets every time.</p>
+      </div>
+      <div class="icard">
+        <div class="inum ca">04</div><span class="iico">🎬</span>
+        <h3>Warner on Top</h3>
+        <p>Led worldwide gross at <strong>$2,081M</strong>, edging Disney's $2,021M for the decade.</p>
+      </div>
+      <div class="icard hl-teal">
+        <div class="inum ct">05</div><span class="iico">🎭</span>
+        <h3>Drama Disconnect</h3>
+        <p>Strong audience numbers, modest profit — popular with viewers, not investors.</p>
+      </div>
+      <div class="icard">
+        <div class="inum ca">06</div><span class="iico">💛</span>
+        <h3>Romance Holds</h3>
+        <p>Profitability of <strong>61.2</strong> — consistent despite smaller audience reach overall.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PDF CTA -->
+  <div class="section sr">
+    <div class="cta-box">
+      <div class="cta-stripe"></div>
+      <div class="cta-bg-circ"></div>
+      <div style="position:relative">
+        <div class="clbl"><span class="clbl-d"></span>Project Report</div>
+        <h2>Read the full<br/><em>analysis report</em></h2>
+        <p>Complete write-up covering data cleaning methodology, visualization decisions, findings, and recommendations — ready to download.</p>
+        <div class="cta-meta">
+          <span>PDF · 12 pages</span>
+          <span>4 visualizations</span>
+          <span>Full methodology</span>
+        </div>
+      </div>
+      <div class="cta-right">
+        <!--
+          PDF DOWNLOAD SETUP:
+          1. Apni PDF file ko naam do: project_report.pdf
+          2. index.html ke SAME folder mein rakho
+          3. Done! Button click karte hi download hoga.
+        -->
+        <a href="project_report.pdf" download="Hollywood_Profitability_Report.pdf" class="btn-dl" id="dlBtn">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M6 9l4 4 4-4"/><path d="M3 15h14"/></svg>
+          Download PDF
+          <div class="btn-dl-shine"></div>
+        </a>
+        <div class="btn-sec">View Dashboard →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="fbrand">Tanisha · Data Analytics Portfolio</span>
+    <span class="ftop">Back to top ↑</span>
+    <span class="fnote">Built with Tableau · R · HTML/CSS</span>
+  </div>
+</div>
+
+<script>
+// Counter animation
+function cnt(el,t,ms){let s=null;function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/ms,1);const e=1-Math.pow(2,-10*p);el.textContent=Math.round(t*e);if(p<1)requestAnimationFrame(step);else el.textContent=t}requestAnimationFrame(step)}
+setTimeout(()=>{cnt(document.getElementById('c1'),77,1800);cnt(document.getElementById('c2'),6,1200);cnt(document.getElementById('c3'),12,1500)},1200);
+
+// Scroll reveal
+const srEls = document.querySelectorAll('.sr');
+const srObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');srObs.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+srEls.forEach(el=>srObs.observe(el));
+
+// PDF download button — click feedback
+document.getElementById('dlBtn').addEventListener('click',function(){
+  const orig = this.innerHTML;
+  this.innerHTML=`<svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 10 8 14 16 6"/></svg> Downloading...`;
+  this.style.background='#1D9E75';
+  this.style.color='white';
+  setTimeout(()=>{this.innerHTML=orig;this.style.background='';this.style.color='';},2500);
+});
+</script>
